@@ -128,8 +128,8 @@ def get_route(hostname):
                     bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here
-                    tracelist1.append(str(int(timeReceived - timeSent * 1000))+"ms")
-                    tracelist1.append(addr[0])
+                    tracelist1.append(str(int(timeReceived - t * 1000))+"ms")
+                    tracelist1.append(gethostbyname(str(addr[0]))[0])
                     tracelist2.append(tracelist1)
                     #Fill in end
                 elif types == 3:
@@ -137,8 +137,8 @@ def get_route(hostname):
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here
-                    tracelist1.append(str(int(timeReceived - timeSent * 1000)) + "ms")
-                    tracelist1.append(addr[0])
+                    tracelist1.append(str(int(timeReceived - t * 1000)) + "ms")
+                    tracelist1.append(gethostbyname(str(addr[0]))[0])
                     tracelist2.append(tracelist1)
                     #Fill in end
                 elif types == 0:
@@ -146,14 +146,14 @@ def get_route(hostname):
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
-                    tracelist1.append(str(int(timeReceived - timeSent * 1000)) + "ms")
-                    tracelist1.append(addr[0])
+                    tracelist1.append(str(int(timeReceived - t * 1000)) + "ms")
+                    tracelist1.append(gethostbyname(str(addr[0]))[0])
                     tracelist2.append(tracelist1)
                     #Fill in end
                 else:
                     #Fill in start
                     #If there is an exception/error to your if statements, you should append that to your list here
-                    tracelist1.append("hostname not returnable")
+                    tracelist1.append("error")
                     #Fill in end
                 break
             finally:
